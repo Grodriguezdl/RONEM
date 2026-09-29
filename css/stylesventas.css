@@ -1,0 +1,812 @@
+/* =========================================
+   RONEM – Ventas e Inventario (Diseño Premium)
+   ========================================= */
+
+:root {
+  --black: #060807;
+  --cream: #e3dee0;
+  --red: #ca2942;
+  --red-dark: #c60b26;
+  --gray-bg: #f0eced;
+  --gray-border: #d8d2d4;
+  --text-muted: #6b5f62;
+  --row-alt: #f7f3f4;
+  --white: #ffffff;
+  --light-red: #ea8b98;
+  --green: #00c85a;
+  --red-neg: #ca2942;
+  --radius: 8px;
+  --shadow: 0 8px 24px rgba(6, 8, 7, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  background: var(--gray-bg);
+  color: var(--black);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   NAVBAR (Estilo Foto 2)
+   ========================================= */
+
+.navbar-ronem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  background: var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+/* Contenedor e imagen del Isotipo / Logo "R" */
+.nav-logo-box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.nav-logo-box img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.nw-main {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.nw-sub {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a7f82;
+}
+
+.nav-links {
+  display: flex;
+  align-items: stretch;
+  height: 56px;
+  gap: 0;
+  background: var(--black);
+}
+
+/* Botones de navegación superior */
+
+button.nav-link-item,
+.nav-link-item {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 110px;
+  height: 56px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid #1a1a1a;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  outline: none;
+  background-color: var(--black) !important;
+  background-image: none !important;
+  color: var(--cream) !important;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+button.nav-link-item:not(.active),
+.nav-link-item:not(.active) {
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+}
+
+button.nav-link-item:not(.active):hover,
+.nav-link-item:not(.active):hover {
+  background-color: #141414 !important;
+  color: #ffffff !important;
+  border-bottom-color: var(--red);
+}
+
+button.nav-link-item.active,
+.nav-link-item.active {
+  background-color: var(--red) !important;
+  color: #ffffff !important;
+  border-bottom-color: var(--red-dark);
+}
+
+button.nav-link-item:active,
+.nav-link-item:active {
+  color: #ffffff !important;
+}
+
+button.nav-link-item:focus,
+.nav-link-item:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* =========================================
+   APARTADOS Y LAYOUT
+   ========================================= */
+
+.apartado {
+  display: block;
+  scroll-margin-top: 72px;
+}
+
+#apartado-ventas {
+  padding-top: 1px;
+}
+
+#apartado-inventario {
+  margin-top: 45px;
+  padding-top: 1px;
+  padding-bottom: 70px;
+}
+
+.page-wrapper {
+  max-width: 1140px;
+  margin: 36px auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =========================================
+   TARJETAS Y PANELES
+   ========================================= */
+
+.card-ronem {
+  padding: 28px 32px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0eaec;
+}
+
+.card-header .card-title-ronem {
+  margin-bottom: 0;
+}
+
+.card-header .btn-ronem {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.card-title-ronem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.card-title-ronem::before {
+  content: "";
+  width: 6px;
+  height: 18px;
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--red);
+  border-radius: 3px;
+}
+
+/* =========================================
+   FORMULARIOS
+   ========================================= */
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  min-width: 140px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  background: #fbf9fa;
+  border: 1px solid var(--gray-border);
+  border-radius: 6px;
+  outline: none;
+  color: var(--black);
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.form-control:hover {
+  border-color: #be8e96;
+}
+
+.form-control:focus {
+  background: var(--white);
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(202, 41, 66, 0.12);
+}
+
+.form-control[readonly] {
+  color: #554c4e;
+  background: #eae5e7;
+  border-color: #d2cbce;
+  cursor: not-allowed;
+}
+
+select.form-control {
+  cursor: pointer;
+}
+
+/* =========================================
+   BOTONES GENERALES
+   ========================================= */
+
+.btn-ronem {
+  width: 100%;
+  padding: 13px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.btn-ronem:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--red-dark);
+  box-shadow: 0 4px 12px rgba(202, 41, 66, 0.3);
+}
+
+.btn-confirm {
+  background: var(--light-red);
+  color: #ffffff;
+}
+
+.btn-confirm:hover {
+  background: #e07080;
+}
+
+.btn-eliminar {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff0f2;
+  border: 1px solid #f8c0c8;
+  border-radius: 6px;
+  color: var(--red);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-eliminar:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #ffffff;
+}
+
+.btn-eliminar:active {
+  transform: scale(0.95);
+}
+
+/* =========================================
+   TABLAS
+   ========================================= */
+
+.tbl-wrap {
+  margin-top: 22px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--gray-border);
+}
+
+.tbl-wrap table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 14px;
+  text-align: left;
+}
+
+.tbl-wrap thead tr {
+  background: var(--black);
+}
+
+.tbl-wrap thead th {
+  padding: 14px 18px;
+  color: var(--cream);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: none;
+}
+
+.tbl-wrap tbody tr {
+  border-bottom: 1px solid var(--gray-border);
+  transition: background-color 0.15s ease;
+}
+
+.tbl-wrap tbody tr:nth-child(even) {
+  background: var(--row-alt);
+}
+
+.tbl-wrap tbody tr:hover {
+  background: #f5ebe2;
+}
+
+.tbl-wrap tbody td {
+  padding: 14px 18px;
+  vertical-align: middle;
+}
+
+.tbl-wrap tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.empty-row td {
+  padding: 42px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* =========================================
+   TOTAL DE VENTA
+   ========================================= */
+
+.total-bar {
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--black);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.total-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cream);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.total-amount {
+  color: var(--green);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* =========================================
+   TRANSACCIONES
+   ========================================= */
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transaction-item {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background: #faf7f8;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.transaction-item:hover {
+  background: var(--row-alt);
+}
+
+.transaction-item.income {
+  border-left-color: var(--green);
+}
+
+.transaction-item.expense {
+  border-left-color: var(--red-neg);
+}
+
+.trans-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trans-amount {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.trans-amount.income {
+  color: var(--green);
+}
+
+.trans-amount.expense {
+  color: var(--red-neg);
+}
+
+.trans-desc {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.trans-time {
+  color: #8a7f82;
+  font-size: 12px;
+}
+
+/* =========================================
+   INVENTARIO
+   ========================================= */
+
+.td-code {
+  color: #555555;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.td-product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.prod-img {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: #f4f0f0;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+}
+
+.prod-name {
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.prod-ref {
+  margin-top: 2px;
+  color: #7a7a7a;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.badge-motor,
+.badge-frenos,
+.badge-electrico,
+.badge-transmision,
+.badge-suspension,
+.badge-carroceria,
+.badge-servicio {
+  background: var(--red);
+}
+
+.td-price {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stock-num {
+  font-weight: 700;
+}
+
+.stock-ok {
+  color: #1d9c43;
+}
+
+.stock-low {
+  color: #c88900;
+}
+
+.stock-out {
+  color: #d11a2a;
+}
+
+.estado-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.estado-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.estado-activo {
+  color: #1d9c43;
+}
+
+.estado-activo::before {
+  background: #20c95f;
+}
+
+.estado-bajo {
+  color: #c88900;
+}
+
+.estado-bajo::before {
+  background: #ffb000;
+}
+
+.estado-agotado {
+  color: #d11a2a;
+}
+
+.estado-agotado::before {
+  background: #d11a2a;
+}
+
+/* =========================================
+   CHECKBOX
+   ========================================= */
+
+.col-sel {
+  width: 50px;
+  text-align: center;
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--red);
+  cursor: pointer;
+}
+
+.selected-row {
+  background: #fff0f3 !important;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+  .page-wrapper {
+    max-width: 100%;
+  }
+
+  .form-group {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar-ronem {
+    padding: 0 12px;
+  }
+
+  .nav-wordmark {
+    display: none;
+  }
+
+  .nav-links {
+    margin-left: auto;
+  }
+
+  button.nav-link-item,
+  .nav-link-item {
+    min-width: auto;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .page-wrapper {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .card-ronem {
+    padding: 20px 18px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-header .btn-ronem {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+
+  .total-bar {
+    padding: 18px;
+  }
+
+  .total-amount {
+    font-size: 28px;
+  }
+
+  #apartado-inventario {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-ronem {
+    min-height: 56px;
+    height: auto;
+    padding: 0 8px;
+  }
+
+  .nav-logo-box {
+    width: 30px;
+    height: 30px;
+  }
+
+  button.nav-link-item,
+  .nav-link-item {
+    height: 56px;
+    padding: 0 10px;
+    letter-spacing: 0.7px;
+  }
+
+  .card-title-ronem {
+    font-size: 16px;
+  }
+
+  .total-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .total-amount {
+    font-size: 30px;
+  }
+}

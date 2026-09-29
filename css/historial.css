@@ -1,0 +1,940 @@
+:root {
+    --ronem-rojo: #d71920;
+    --ronem-rojo-oscuro: #981017;
+    --ronem-negro: #060606;
+    --ronem-fondo: #0b0b0b;
+    --ronem-panel: #141414;
+    --ronem-panel-claro: #1b1b1b;
+    --ronem-blanco: #ffffff;
+    --ronem-gris: #a8a8a8;
+    --ronem-borde: rgba(255, 255, 255, 0.1);
+    --ronem-sombra: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/*=====================================
+CONFIGURACIÓN GENERAL
+======================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--ronem-blanco);
+    font-family: "PT Sans", sans-serif;
+    background: #080808;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-danger {
+    background-color: var(--ronem-rojo);
+    border-color: var(--ronem-rojo);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: var(--ronem-rojo-oscuro);
+    border-color: var(--ronem-rojo-oscuro);
+}
+
+.btn-outline-light {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.38);
+}
+
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+/*=====================================
+BARRA DE NAVEGACIÓN
+======================================*/
+
+.panel-navbar {
+    min-height: 76px;
+    background: rgba(5, 5, 5, 0.93);
+    border-bottom: 1px solid var(--ronem-borde);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+}
+
+.panel-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+.panel-brand {
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.panel-brand-sub {
+    margin-top: 4px;
+    color: var(--ronem-rojo);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    line-height: 1;
+}
+
+.panel-navbar .nav-link {
+    position: relative;
+    padding: 10px 13px !important;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: color 0.25s ease;
+}
+
+.panel-navbar .nav-link:hover,
+.panel-navbar .nav-link.active {
+    color: white;
+}
+
+.panel-navbar .nav-link::after {
+    position: absolute;
+    right: 13px;
+    bottom: 3px;
+    left: 13px;
+    height: 2px;
+    content: "";
+    background: var(--ronem-rojo);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.panel-navbar .nav-link:hover::after,
+.panel-navbar .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.panel-dropdown {
+    padding: 8px;
+    background: rgba(17, 17, 17, 0.98);
+    border: 1px solid var(--ronem-borde);
+    border-radius: 13px;
+    box-shadow: var(--ronem-sombra);
+}
+
+.panel-dropdown .dropdown-item {
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+
+.panel-dropdown .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/*=====================================
+CONTENIDO PRINCIPAL
+======================================*/
+
+.panel-contenido {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 45px;
+}
+
+.panel-encabezado {
+    position: relative;
+    overflow: hidden;
+    padding: 36px;
+    margin-bottom: 24px;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: none;
+}
+
+.panel-encabezado::before,
+.panel-encabezado::after {
+    display: none;
+}
+
+.panel-titulo {
+    margin: 0 0 8px;
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 0.95;
+}
+
+.panel-titulo span {
+    color: var(--ronem-rojo);
+}
+
+.panel-descripcion {
+    max-width: 680px;
+    margin: 0;
+    color: var(--ronem-gris);
+    font-size: 1.03rem;
+}
+
+.btn-actualizar-historial {
+    padding: 13px 23px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(215, 25, 32, 0.2);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+/*=====================================
+TARJETAS DE RESUMEN
+======================================*/
+
+.resumen-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 104px;
+    padding: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27, 27, 27, 0.96),
+            rgba(15, 15, 15, 0.96)
+        );
+    border: 1px solid var(--ronem-borde);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.resumen-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(215, 25, 32, 0.42);
+}
+
+.resumen-icono {
+    display: grid;
+    place-items: center;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    color: white;
+    background: rgba(215, 25, 32, 0.16);
+    border: 1px solid rgba(215, 25, 32, 0.35);
+    border-radius: 14px;
+    font-size: 1.65rem;
+}
+
+.resumen-icono-servicios {
+    color: #ffd8d9;
+    background: rgba(170, 30, 36, 0.15);
+    border-color: rgba(215, 25, 32, 0.35);
+}
+
+.resumen-icono-finalizados {
+    color: #a8ffc1;
+    background: rgba(31, 150, 74, 0.13);
+    border-color: rgba(31, 150, 74, 0.33);
+}
+
+.resumen-numero {
+    display: block;
+    font-family: "League Spartan", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.resumen-texto {
+    display: block;
+    margin-top: 5px;
+    color: var(--ronem-gris);
+    font-size: 0.86rem;
+}
+
+/*=====================================
+ALERTAS
+======================================*/
+
+#alertaHistorial .alert {
+    color: white;
+    background: rgba(20, 20, 20, 0.96);
+    border: 1px solid var(--ronem-borde);
+    border-radius: 12px;
+}
+
+#alertaHistorial .alert-success {
+    border-left: 4px solid #33b96a;
+}
+
+#alertaHistorial .alert-danger {
+    border-left: 4px solid var(--ronem-rojo);
+}
+
+#alertaHistorial .alert-warning {
+    border-left: 4px solid #e0a800;
+}
+
+#alertaHistorial .alert-info {
+    border-left: 4px solid #4ba3ff;
+}
+
+/*=====================================
+PESTAÑAS
+======================================*/
+
+.historial-tabs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 24px;
+    background: rgba(18, 18, 18, 0.86);
+    border: 1px solid var(--ronem-borde);
+    border-radius: 16px;
+}
+
+.historial-tab {
+    flex: 1;
+    min-height: 48px;
+    padding: 11px 18px;
+    color: var(--ronem-gris);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.historial-tab:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.historial-tab.active {
+    color: white;
+    background: var(--ronem-rojo);
+    border-color: var(--ronem-rojo);
+    box-shadow: 0 9px 22px rgba(215, 25, 32, 0.18);
+}
+
+/*=====================================
+PANELES DEL HISTORIAL
+======================================*/
+
+.historial-panel {
+    overflow: hidden;
+    padding: 24px;
+    margin-bottom: 30px;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+}
+
+.historial-panel-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 21px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--ronem-borde);
+}
+
+.historial-etiqueta {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: var(--ronem-rojo);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.historial-panel-encabezado h2 {
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.historial-panel-encabezado p {
+    max-width: 650px;
+    margin: 5px 0 0;
+    color: var(--ronem-gris);
+    font-size: 0.9rem;
+}
+
+.historial-panel-icono {
+    display: grid;
+    place-items: center;
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+    color: var(--ronem-rojo);
+    background: rgba(215, 25, 32, 0.12);
+    border: 1px solid rgba(215, 25, 32, 0.32);
+    border-radius: 15px;
+    font-size: 1.6rem;
+}
+
+/*=====================================
+ESTADOS DE CARGA Y VACÍOS
+======================================*/
+
+.estado-carga,
+.estado-vacio,
+.detalle-compra-carga {
+    padding: 70px 20px;
+    text-align: center;
+    background: rgba(18, 18, 18, 0.72);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+}
+
+.estado-carga p,
+.detalle-compra-carga p {
+    margin: 14px 0 0;
+    color: var(--ronem-gris);
+}
+
+.estado-vacio-icono {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 18px;
+    color: var(--ronem-rojo);
+    background: rgba(215, 25, 32, 0.1);
+    border: 1px solid rgba(215, 25, 32, 0.25);
+    border-radius: 50%;
+    font-size: 2.7rem;
+}
+
+.estado-vacio h3 {
+    margin-bottom: 7px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.estado-vacio p {
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--ronem-gris);
+}
+
+/*=====================================
+TABLAS
+======================================*/
+
+.tabla-historial-contenedor {
+    overflow: hidden;
+    border: 1px solid var(--ronem-borde);
+    border-radius: 14px;
+}
+
+.tabla-historial {
+    width: 100%;
+    margin: 0;
+    color: white;
+    border-collapse: collapse;
+}
+
+.tabla-historial thead {
+    background: #191919;
+}
+
+.tabla-historial th {
+    padding: 15px 17px;
+    color: #d7d7d7;
+    border-bottom: 1px solid var(--ronem-borde);
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    white-space: nowrap;
+}
+
+.tabla-historial td {
+    padding: 16px 17px;
+    color: #e9e9e9;
+    background: #111111;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.tabla-historial tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabla-historial tbody tr {
+    transition: background 0.2s ease;
+}
+
+.tabla-historial tbody tr:hover td {
+    background: #171717;
+}
+
+.tabla-historial .btn-ver-detalle {
+    padding: 7px 12px;
+    color: white;
+    background: rgba(215, 25, 32, 0.12);
+    border: 1px solid rgba(215, 25, 32, 0.4);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.tabla-historial .btn-ver-detalle:hover {
+    background: var(--ronem-rojo);
+    border-color: var(--ronem-rojo);
+}
+
+/*=====================================
+CHIPS DE ESTADO
+======================================*/
+
+.estado-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.estado-recibida {
+    color: #d7e9ff;
+    background: rgba(48, 109, 180, 0.18);
+    border-color: rgba(95, 158, 230, 0.3);
+}
+
+.estado-diagnostico {
+    color: #ffe8aa;
+    background: rgba(160, 112, 16, 0.18);
+    border-color: rgba(224, 168, 0, 0.32);
+}
+
+.estado-repuesto {
+    color: #f8d7ff;
+    background: rgba(130, 53, 150, 0.18);
+    border-color: rgba(187, 98, 212, 0.3);
+}
+
+.estado-reparacion {
+    color: #ffd4d6;
+    background: rgba(215, 25, 32, 0.16);
+    border-color: rgba(215, 25, 32, 0.36);
+}
+
+.estado-prueba {
+    color: #bfefff;
+    background: rgba(13, 111, 145, 0.18);
+    border-color: rgba(62, 184, 224, 0.3);
+}
+
+.estado-lista {
+    color: #c9ffdc;
+    background: rgba(30, 140, 72, 0.17);
+    border-color: rgba(71, 198, 116, 0.3);
+}
+
+.estado-entregada,
+.estado-finalizada {
+    color: #a8ffc1;
+    background: rgba(31, 150, 74, 0.15);
+    border-color: rgba(31, 150, 74, 0.34);
+}
+
+.estado-cancelada {
+    color: #ffc0c2;
+    background: rgba(160, 31, 37, 0.17);
+    border-color: rgba(160, 31, 37, 0.35);
+}
+
+.estado-garantia {
+    color: #fff1ad;
+    background: rgba(157, 126, 0, 0.17);
+    border-color: rgba(224, 188, 31, 0.32);
+}
+
+.estado-desconocido {
+    color: #dddddd;
+    background: rgba(110, 110, 110, 0.16);
+    border-color: rgba(180, 180, 180, 0.25);
+}
+
+/*=====================================
+LISTADO DE SERVICIOS
+======================================*/
+
+.servicios-listado {
+    display: grid;
+    gap: 16px;
+}
+
+.servicio-card {
+    overflow: hidden;
+    padding: 21px;
+    background: #111111;
+    border: 1px solid var(--ronem-borde);
+    border-radius: 15px;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(215, 25, 32, 0.48);
+}
+
+.servicio-card-encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ronem-borde);
+}
+
+.servicio-id {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ronem-rojo);
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.servicio-card h3 {
+    margin: 0;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.servicio-datos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding: 18px 0;
+}
+
+.servicio-dato {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+
+.servicio-dato i {
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: var(--ronem-rojo);
+    font-size: 1rem;
+}
+
+.servicio-dato small {
+    display: block;
+    margin-bottom: 2px;
+    color: #777;
+    font-size: 0.64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+}
+
+.servicio-dato strong {
+    display: block;
+    overflow-wrap: anywhere;
+    color: #eeeeee;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.servicio-comentario {
+    padding: 14px 16px;
+    color: #d0d0d0;
+    background: rgba(255, 255, 255, 0.035);
+    border-left: 3px solid var(--ronem-rojo);
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.servicio-comentario i {
+    margin-right: 7px;
+    color: var(--ronem-rojo);
+}
+
+/*=====================================
+MODAL DEL HISTORIAL
+======================================*/
+
+.modal-historial {
+    overflow: hidden;
+    color: white;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 20px;
+    box-shadow: 0 28px 85px rgba(0, 0, 0, 0.7);
+}
+
+.modal-historial .modal-header {
+    padding: 23px 26px;
+    background: #101010;
+    border-color: var(--ronem-borde);
+}
+
+.modal-etiqueta {
+    color: var(--ronem-rojo);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+}
+
+.modal-historial .modal-title {
+    margin-top: 3px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.modal-historial .modal-body {
+    padding: 26px;
+}
+
+.modal-historial .modal-footer {
+    padding: 18px 26px;
+    background: rgba(255, 255, 255, 0.018);
+    border-color: var(--ronem-borde);
+}
+
+.modal-historial .modal-footer .btn {
+    min-width: 120px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.detalle-total {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    padding: 18px;
+    background: #171717;
+    border-top: 1px solid var(--ronem-borde);
+}
+
+.detalle-total span {
+    color: var(--ronem-gris);
+    font-size: 0.9rem;
+}
+
+.detalle-total strong {
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.45rem;
+}
+
+/*=====================================
+SCROLLBAR
+======================================*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d2d2d;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ronem-rojo);
+}
+
+/*=====================================
+RESPONSIVE
+======================================*/
+
+@media (max-width: 991px) {
+
+    .panel-navbar .navbar-collapse {
+        padding: 18px 0 5px;
+    }
+
+    .panel-navbar .nav-link {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+
+    .panel-navbar .nav-link::after {
+        right: 5px;
+        left: 5px;
+        transform-origin: left;
+    }
+
+    .panel-navbar .dropdown {
+        margin-top: 12px;
+    }
+
+    .panel-encabezado {
+        padding: 28px;
+    }
+
+    .btn-actualizar-historial {
+        width: 100%;
+    }
+
+    .servicio-datos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .panel-contenido {
+        padding-top: 102px;
+    }
+
+    .panel-encabezado {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .panel-titulo {
+        font-size: 2.6rem;
+    }
+
+    .panel-descripcion {
+        font-size: 0.93rem;
+    }
+
+    .resumen-card {
+        min-height: 92px;
+    }
+
+    .historial-tabs {
+        flex-direction: column;
+    }
+
+    .historial-tab {
+        width: 100%;
+    }
+
+    .historial-panel {
+        padding: 18px;
+    }
+
+    .historial-panel-encabezado {
+        align-items: flex-start;
+    }
+
+    .historial-panel-icono {
+        flex-basis: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .servicio-card-encabezado {
+        flex-direction: column;
+    }
+
+    .servicio-datos {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-historial .modal-header,
+    .modal-historial .modal-body,
+    .modal-historial .modal-footer {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .detalle-total {
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .panel-logo {
+        width: 39px;
+        height: 39px;
+    }
+
+    .panel-brand {
+        font-size: 0.92rem;
+    }
+
+    .panel-brand-sub {
+        font-size: 0.58rem;
+    }
+
+    .panel-encabezado {
+        padding: 20px;
+    }
+
+    .panel-titulo {
+        font-size: 2.2rem;
+    }
+
+    .historial-panel-encabezado {
+        flex-direction: column;
+    }
+
+    .historial-panel-icono {
+        order: -1;
+    }
+
+    .tabla-historial th,
+    .tabla-historial td {
+        padding: 13px;
+    }
+
+    .servicio-card {
+        padding: 17px;
+    }
+
+}

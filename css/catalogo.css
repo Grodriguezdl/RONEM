@@ -1,0 +1,407 @@
+/* ==================================================
+   SECCIÓN DE SERVICIOS
+================================================== */
+
+.servicios-section {
+    background: #070707;
+    padding: 90px 0 100px;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.servicios-section .container-fluid {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   ENCABEZADO
+================================================== */
+
+.servicios-encabezado {
+    margin-bottom: 130px;
+}
+
+.servicios-titulo {
+    margin: 0;
+    color: #f5f5f5;
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(3.4rem, 6vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: 18px;
+    line-height: 1;
+}
+
+.servicios-titulo span {
+    color: #dc3545;
+}
+
+.servicios-subtitulo {
+    margin: 28px 0 0;
+    color: #7f838a;
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 7px;
+}
+
+
+/* ==================================================
+   TARJETAS
+================================================== */
+
+.servicio-card {
+    height: 100%;
+    min-height: 575px;
+    padding: 27px;
+    background: #0d0d0d;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.servicio-card:hover {
+    border-color: rgba(220, 53, 69, 0.8);
+    box-shadow:
+        0 0 0 1px rgba(220, 53, 69, 0.15),
+        0 12px 35px rgba(0, 0, 0, 0.45);
+    transform: translateY(-3px);
+}
+
+
+/* ==================================================
+   CABECERA DE LA TARJETA
+================================================== */
+
+.servicio-card-header {
+    min-height: 100px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #141414;
+    border-bottom: 1px solid #333333;
+}
+
+.servicio-card-header i {
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.servicio-card:nth-child(even) .servicio-card-header i {
+    color: #dc3545;
+}
+
+.servicio-card-header h3 {
+    margin: 0;
+    color: #ffffff;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   CUERPO DE LA TARJETA
+================================================== */
+
+.servicio-card-body {
+    min-height: 405px;
+    padding: 48px 32px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.servicio-lista {
+    margin: 0 0 45px;
+    padding: 0;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.servicio-lista li {
+    min-height: 45px;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #a9a9a9;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1rem;
+    border-bottom: 1px solid #212121;
+}
+
+.servicio-lista li:last-child {
+    border-bottom: none;
+}
+
+
+/* ==================================================
+   PUNTOS DE LOS PRODUCTOS
+================================================== */
+
+.servicio-punto {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    display: inline-block;
+    background: #565656;
+    border-radius: 50%;
+}
+
+.servicio-lista li.producto-destacado {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.servicio-lista li.producto-destacado .servicio-punto {
+    background: #f02f42;
+    box-shadow:
+        0 0 5px rgba(240, 47, 66, 0.9),
+        0 0 12px rgba(240, 47, 66, 0.45);
+}
+
+
+/* ==================================================
+   BOTÓN CATÁLOGO
+================================================== */
+
+.btn-catalogo {
+    width: 100%;
+    min-height: 49px;
+    padding: 14px 20px;
+    color: #ffffff;
+    background: #191919;
+    border: 1px solid #373737;
+    border-radius: 6px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.77rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn-catalogo:hover {
+    color: #ffffff;
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+
+/* ==================================================
+   MODAL DEL CATÁLOGO
+================================================== */
+
+.catalogo-modal {
+    color: #ffffff;
+    background: #0c0c0c;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
+}
+
+.catalogo-modal-header {
+    padding: 24px 28px;
+    color: #ffffff;
+    background: #151515;
+    border-bottom: 1px solid #353535;
+}
+
+.catalogo-modal-header i {
+    color: #dc3545;
+    font-size: 2rem;
+}
+
+.catalogo-modal-header .modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.catalogo-modal .modal-body {
+    padding: 30px;
+    color: #ffffff;
+    background: #0c0c0c;
+}
+
+
+/* ==================================================
+   PRODUCTOS DEL MODAL
+================================================== */
+
+.catalogo-producto {
+    position: relative;
+    padding: 25px;
+    color: #ffffff;
+    background: #151515;
+    border: 1px solid #323232;
+    border-radius: 9px;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.catalogo-producto:hover {
+    transform: translateY(-3px);
+    border-color: #dc3545;
+}
+
+.catalogo-producto h4 {
+    margin: 10px 0 15px;
+    color: #ffffff;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.catalogo-producto p {
+    min-height: 68px;
+    margin-bottom: 22px;
+    color: #a9a9a9;
+    font-family: "PT Sans", sans-serif;
+    line-height: 1.6;
+}
+
+.catalogo-destacado {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #ffffff;
+    background: #dc3545;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.catalogo-producto-info {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #303030;
+}
+
+.catalogo-producto-info span {
+    color: #dc3545;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.catalogo-producto-info small {
+    color: #a5a5a5;
+}
+
+
+/* ==================================================
+   BOTÓN DE CIERRE DEL MODAL
+================================================== */
+
+.catalogo-modal .btn-close {
+    opacity: 0.85;
+}
+
+.catalogo-modal .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* ==================================================
+   FONDO DEL MODAL
+================================================== */
+
+.modal-backdrop.show {
+    opacity: 0.82;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1199px) {
+    .servicios-encabezado {
+        margin-bottom: 80px;
+    }
+
+    .servicio-card {
+        min-height: 535px;
+    }
+}
+
+@media (max-width: 991px) {
+    .servicios-section {
+        padding: 75px 0;
+    }
+
+    .servicios-titulo {
+        letter-spacing: 12px;
+    }
+
+    .servicios-subtitulo {
+        letter-spacing: 4px;
+    }
+
+    .servicio-card {
+        min-height: auto;
+    }
+
+    .servicio-card-body {
+        min-height: 390px;
+    }
+}
+
+@media (max-width: 767px) {
+    .servicios-section {
+        padding: 65px 0;
+    }
+
+    .servicios-encabezado {
+        margin-bottom: 55px;
+    }
+
+    .servicios-titulo {
+        font-size: 3rem;
+        letter-spacing: 7px;
+    }
+
+    .servicios-subtitulo {
+        padding: 0 15px;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        line-height: 1.8;
+    }
+
+    .servicio-card {
+        padding: 18px;
+    }
+
+    .servicio-card-header {
+        padding: 25px 20px;
+    }
+
+    .servicio-card-header h3 {
+        font-size: 1.35rem;
+    }
+
+    .servicio-card-body {
+        min-height: auto;
+        padding: 35px 20px 20px;
+    }
+
+    .catalogo-modal .modal-body {
+        padding: 20px;
+    }
+}

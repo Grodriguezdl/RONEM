@@ -1,0 +1,685 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════════════════════════════════
+   RESET Y COMPATIBILIDAD BOOTSTRAP
+   ═══════════════════════════════════════ */
+.modal-ronem {
+    background: transparent !important;
+    border: none !important;
+}
+
+.container-modal * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   CONTENEDOR PRINCIPAL (GLASSMORPHISM)
+   ═══════════════════════════════════════ */
+.container-modal {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 950px;
+    min-height: 580px;
+    margin: auto;
+    border-radius: 40px; 
+    background: rgba(255, 255, 255, 0.08) !important; 
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ═══════════════════════════════════════
+   FORMULARIOS
+   ═══════════════════════════════════════ */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+    background: transparent;
+}
+
+.sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container-modal.active .sign-in {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container-modal.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+}
+
+.container-modal form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    text-align: center;
+}
+
+.container-modal h1 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Inputs estilo cristal */
+.container-modal input {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.container-modal input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+.container-modal button:not(.hidden) {
+    background: #D24E5B;
+    color: #ffffff;
+    padding: 14px 50px;
+    border: none;
+    border-radius: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(210, 78, 91, 0.4);
+    transition: 0.3s;
+}
+
+/* ═══════════════════════════════════════
+   PANEL MÓVIL (CORRECCIÓN DE VISIBILIDAD)
+   ═══════════════════════════════════════ */
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+    z-index: 1000;
+    border-radius: 100px 0 0 60px; 
+}
+
+.container-modal.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 100px 60px 0;
+}
+
+.toggle {
+    background: linear-gradient(135deg, rgba(197, 3, 55, 0.85) 0%, rgba(120, 51, 69, 0.92) 100%);
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.container-modal.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    transition: all 0.6s ease;
+}
+
+/* Ajuste para que el contenido no se pierda al mover */
+.toggle-left {
+    transform: translateX(-20%);
+}
+
+.container-modal.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container-modal.active .toggle-right {
+    transform: translateX(20%);
+}
+
+/* ═══════════════════════════════════════
+   LOGO Y BOTONES DEL PANEL
+   ═══════════════════════════════════════ */
+.logo{
+    width: 300px;
+    max-width: 80%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 25px;
+
+    filter:
+        drop-shadow(0 0 12px rgba(255,255,255,0.25))
+        drop-shadow(0 0 30px rgba(255,255,255,0.15));
+
+    transition: 0.3s ease;
+}
+
+.toggle-panel{
+    gap: 10px;
+}
+
+.container-modal button.hidden {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 12px 40px;
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.container-modal button.hidden:hover {
+    background: #ffffff;
+    color: #783345;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 6px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.custom-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 1100;
+    background: rgba(255,255,255,0.1) !important;
+    border-radius: 50% !important;
+}
+
+/* ═══════════════════════════════════════
+   FIX ICONOS FONT AWESOME
+═══════════════════════════════════════ */
+
+.social-icons i{
+    font-size: 18px !important;
+    color: #ffffff !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+}
+
+.social-icons a{
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-brands{
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+.custom-close{
+    display: none !important;
+}
+/* ═══════════════════════════════════════
+   MODAL DE VERIFICACIÓN
+═══════════════════════════════════════ */
+
+.modal-verificacion-dialog {
+    width: calc(100% - 30px);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-verificacion-ronem {
+    position: relative;
+    overflow: hidden;
+    padding: 42px 38px 34px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 32px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(72, 20, 37, 0.96),
+            rgba(29, 15, 24, 0.98)
+        );
+    color: #ffffff;
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    font-family: "Montserrat", sans-serif;
+}
+
+.modal-verificacion-ronem::before {
+    content: "";
+    position: absolute;
+    top: -110px;
+    right: -100px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(210, 78, 91, 0.20);
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.modal-verificacion-ronem::after {
+    content: "";
+    position: absolute;
+    bottom: -130px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(197, 3, 55, 0.12);
+    filter: blur(12px);
+    pointer-events: none;
+}
+
+.verificacion-cabecera,
+.modal-verificacion-ronem form {
+    position: relative;
+    z-index: 2;
+}
+
+.verificacion-cabecera {
+    text-align: center;
+}
+
+.verificacion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(210, 78, 91, 0.95),
+            rgba(155, 42, 65, 0.95)
+        );
+    box-shadow:
+        0 16px 35px rgba(210, 78, 91, 0.28);
+}
+
+.verificacion-icono i {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.verificacion-marca {
+    display: block;
+    margin-bottom: 8px;
+    color: #f4a5ae;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+
+.verificacion-cabecera h2 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.verificacion-cabecera p {
+    max-width: 410px;
+    margin: 0 auto 8px;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.correo-verificacion {
+    display: inline-block;
+    margin-top: 3px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.codigo-verificacion {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin: 30px 0 18px;
+}
+
+/*
+ * Esta regla es independiente de:
+ * .container-modal input
+ */
+.codigo-verificacion .codigo-casilla {
+    width: 100%;
+    height: 62px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.65rem;
+    font-weight: 800;
+    text-align: center;
+    caret-color: #f28b96;
+    outline: none;
+    box-shadow: none;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.codigo-verificacion .codigo-casilla:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.codigo-verificacion .codigo-casilla:focus {
+    border-color: #e56a77;
+    background: rgba(255, 255, 255, 0.13);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 0 4px rgba(210, 78, 91, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.14);
+}
+
+.codigo-verificacion .codigo-casilla:not(:placeholder-shown) {
+    border-color: rgba(242, 139, 150, 0.65);
+}
+
+.mensaje-codigo {
+    margin: 0 0 22px;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.btn-verificar-correo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 17px;
+    background:
+        linear-gradient(
+            135deg,
+            #d24e5b,
+            #a92f48
+        );
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow:
+        0 14px 28px rgba(210, 78, 91, 0.29);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.btn-verificar-correo:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 18px 34px rgba(210, 78, 91, 0.36);
+}
+
+.btn-verificar-correo:disabled {
+    opacity: 0.42;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.reenvio-codigo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 22px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.82rem;
+}
+
+.btn-reenviar-codigo {
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: #f28b96;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-reenviar-codigo:hover:not(:disabled) {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.btn-reenviar-codigo:disabled {
+    color: rgba(255, 255, 255, 0.38);
+    cursor: default;
+}
+
+.enlace-volver-verificacion {
+    display: block;
+    width: max-content;
+    margin: 20px auto 0;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.enlace-volver-verificacion:hover {
+    color: #ffffff;
+}
+
+
+/* ═══════════════════════════════════════
+   RESPONSIVE DEL VERIFICADOR
+═══════════════════════════════════════ */
+
+@media (max-width: 575px) {
+
+    .modal-verificacion-ronem {
+        padding: 34px 18px 28px;
+        border-radius: 26px;
+    }
+
+    .verificacion-icono {
+        width: 66px;
+        height: 66px;
+        border-radius: 20px;
+    }
+
+    .verificacion-cabecera h2 {
+        font-size: 1.6rem;
+    }
+
+    .codigo-verificacion {
+        gap: 6px;
+        margin-top: 25px;
+    }
+
+    .codigo-verificacion .codigo-casilla {
+        height: 52px;
+        border-radius: 12px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .modal-verificacion-ronem {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .codigo-verificacion {
+        gap: 4px;
+    }
+
+    .codigo-verificacion .codigo-casilla {
+        height: 48px;
+        border-radius: 10px;
+        font-size: 1.15rem;
+    }
+}
+
+/* ═══════════════════════════════════════
+   AISLAMIENTO DEL MODAL DE VERIFICACIÓN
+   Evita que Bootstrap u otros estilos de la
+   página deformen el cuadro y sus controles.
+═══════════════════════════════════════ */
+
+#modalVerificacionCorreo,
+#modalVerificacionCorreo *,
+#modalVerificacionCorreo *::before,
+#modalVerificacionCorreo *::after {
+    box-sizing: border-box;
+}
+
+#modalVerificacionCorreo {
+    font-family: "Montserrat", sans-serif;
+}
+
+#modalVerificacionCorreo .modal-verificacion-dialog {
+    width: calc(100% - 30px);
+    max-width: 560px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#modalVerificacionCorreo .modal-verificacion-ronem {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+#modalVerificacionCorreo .verificacion-cabecera,
+#modalVerificacionCorreo .form-verificacion-correo {
+    position: relative;
+    z-index: 2;
+}
+
+#modalVerificacionCorreo .form-verificacion-correo {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    text-align: initial;
+}
+
+#modalVerificacionCorreo .codigo-verificacion {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+#modalVerificacionCorreo .codigo-verificacion .codigo-casilla {
+    display: block;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#modalVerificacionCorreo .btn-verificar-correo {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+#modalVerificacionCorreo .btn-reenviar-codigo {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-transform: none;
+}
+
+#modalVerificacionCorreo .enlace-volver-verificacion {
+    text-align: center;
+}
+
+@media (max-width: 575px) {
+    #modalVerificacionCorreo .modal-verificacion-dialog {
+        width: calc(100% - 20px);
+    }
+}

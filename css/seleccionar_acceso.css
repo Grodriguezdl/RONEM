@@ -1,0 +1,346 @@
+:root {
+    --ronem-vino: #96163A;
+    --ronem-rosa: #D24E5B;
+    --ronem-oscuro: #6E1A22;
+    --ronem-rojo: #DC3545;
+    --ronem-negro: #0A090A;
+    --ronem-carmesi: #CA2942;
+    --ronem-ambar: #F59E0B;
+    --ronem-blanco: #FFFFFF;
+    --ronem-gris: #A7A7A7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: "PT Sans", sans-serif;
+    color: var(--ronem-blanco);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(150, 22, 58, 0.28),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(202, 41, 66, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #050505,
+            var(--ronem-negro) 55%,
+            #14070B
+        );
+}
+
+.access-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   BARRA SUPERIOR
+========================================= */
+
+.topbar {
+    padding: 18px 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 9, 10, 0.78);
+    backdrop-filter: blur(16px);
+}
+
+.topbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ronem-blanco);
+    text-decoration: none;
+}
+
+.brand-link:hover {
+    color: var(--ronem-blanco);
+}
+
+.brand-logo {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.brand-subtitle {
+    color: var(--ronem-rosa);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.logout-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    color: var(--ronem-blanco);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.logout-link:hover {
+    color: var(--ronem-blanco);
+    border-color: var(--ronem-rojo);
+    background: rgba(220, 53, 69, 0.15);
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+.main-content {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    padding: 58px 24px;
+}
+
+.page-header {
+    text-align: center;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    margin-bottom: 18px;
+    color: #FFD4DA;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(210, 78, 91, 0.38);
+    border-radius: 999px;
+    background: rgba(150, 22, 58, 0.16);
+}
+
+.page-title {
+    margin-bottom: 12px;
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.3rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.page-title span {
+    color: var(--ronem-rosa);
+}
+
+.page-description {
+    max-width: 720px;
+    margin: 0 auto 46px;
+    color: var(--ronem-gris);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* =========================================
+   TARJETAS DE ACCESO
+========================================= */
+
+.access-card {
+    position: relative;
+    height: 100%;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.access-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--ronem-vino),
+            var(--ronem-rosa),
+            var(--ronem-ambar)
+        );
+}
+
+.access-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(210, 78, 91, 0.52);
+    box-shadow: 0 24px 65px rgba(110, 26, 34, 0.30);
+}
+
+.access-icon {
+    width: 68px;
+    height: 68px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 23px;
+    color: var(--ronem-blanco);
+    font-size: 1.8rem;
+    border: 1px solid rgba(210, 78, 91, 0.35);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(150, 22, 58, 0.75),
+            rgba(202, 41, 66, 0.30)
+        );
+
+    box-shadow: 0 12px 30px rgba(150, 22, 58, 0.24);
+}
+
+.access-title {
+    margin-bottom: 12px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.access-description {
+    min-height: 92px;
+    margin-bottom: 26px;
+    color: var(--ronem-gris);
+    line-height: 1.6;
+}
+
+.access-button {
+    width: 100%;
+    padding: 12px 18px;
+    color: var(--ronem-blanco);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 0;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--ronem-vino),
+            var(--ronem-carmesi)
+        );
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.access-button:hover {
+    color: var(--ronem-blanco);
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   SUPER ADMINISTRADOR
+========================================= */
+
+.super-admin-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    max-width: 720px;
+    margin: 38px auto 0;
+    padding: 15px 18px;
+    color: #FFDFA8;
+    font-size: 0.9rem;
+    text-align: center;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 13px;
+    background: rgba(245, 158, 11, 0.08);
+}
+
+/* =========================================
+   PIE DE PÁGINA
+========================================= */
+
+.footer-text {
+    padding: 18px;
+    color: #777777;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO
+========================================= */
+
+@media (max-width: 575px) {
+    .topbar {
+        padding: 14px 18px;
+    }
+
+    .logout-text {
+        display: none;
+    }
+
+    .logout-link {
+        width: 42px;
+        height: 42px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .main-content {
+        padding-top: 42px;
+    }
+
+    .access-description {
+        min-height: auto;
+    }
+
+    .super-admin-note {
+        align-items: flex-start;
+    }
+}

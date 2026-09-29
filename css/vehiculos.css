@@ -1,0 +1,967 @@
+:root {
+    --ronem-rojo: #d71920;
+    --ronem-rojo-oscuro: #981017;
+    --ronem-negro: #060606;
+    --ronem-fondo: #0b0b0b;
+    --ronem-panel: #141414;
+    --ronem-panel-claro: #1b1b1b;
+    --ronem-blanco: #ffffff;
+    --ronem-gris: #a8a8a8;
+    --ronem-borde: rgba(255, 255, 255, 0.1);
+    --ronem-sombra: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/*=====================================
+CONFIGURACIÓN GENERAL
+======================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--ronem-blanco);
+    font-family: "PT Sans", sans-serif;
+    background: #080808;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+.btn-danger {
+    background-color: var(--ronem-rojo);
+    border-color: var(--ronem-rojo);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: var(--ronem-rojo-oscuro);
+    border-color: var(--ronem-rojo-oscuro);
+}
+
+.btn-outline-danger {
+    color: #ff4f55;
+    border-color: rgba(215, 25, 32, 0.65);
+}
+
+.btn-outline-danger:hover {
+    color: white;
+    background: var(--ronem-rojo);
+    border-color: var(--ronem-rojo);
+}
+
+/*=====================================
+BARRA DE NAVEGACIÓN
+======================================*/
+
+.panel-navbar {
+    min-height: 76px;
+    background: rgba(5, 5, 5, 0.93);
+    border-bottom: 1px solid var(--ronem-borde);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+}
+
+.panel-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+.panel-brand {
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.panel-brand-sub {
+    margin-top: 4px;
+    color: var(--ronem-rojo);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    line-height: 1;
+}
+
+.panel-navbar .nav-link {
+    position: relative;
+    padding: 10px 13px !important;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: color 0.25s ease;
+}
+
+.panel-navbar .nav-link:hover,
+.panel-navbar .nav-link.active {
+    color: white;
+}
+
+.panel-navbar .nav-link::after {
+    position: absolute;
+    right: 13px;
+    bottom: 3px;
+    left: 13px;
+    height: 2px;
+    content: "";
+    background: var(--ronem-rojo);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.panel-navbar .nav-link:hover::after,
+.panel-navbar .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.panel-dropdown {
+    padding: 8px;
+    background: rgba(17, 17, 17, 0.98);
+    border: 1px solid var(--ronem-borde);
+    border-radius: 13px;
+    box-shadow: var(--ronem-sombra);
+}
+
+.panel-dropdown .dropdown-item {
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+
+.panel-dropdown .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/*=====================================
+CONTENIDO PRINCIPAL
+======================================*/
+
+.panel-contenido {
+    padding-top: 120px;
+    min-height: 100vh;
+}
+
+.panel-encabezado {
+    position: relative;
+    overflow: hidden;
+    padding: 36px;
+    margin-bottom: 24px;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: none;
+}
+
+.panel-encabezado::before,
+.panel-encabezado::after {
+    display: none;
+}
+.panel-encabezado > * {
+    position: relative;
+    z-index: 2;
+}
+
+.panel-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 13px;
+    color: #ff6b70;
+    background: rgba(215, 25, 32, 0.12);
+    border: 1px solid rgba(215, 25, 32, 0.28);
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.panel-titulo {
+    margin: 13px 0 5px;
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 0.95;
+}
+
+.panel-titulo span {
+    color: var(--ronem-rojo);
+}
+
+.panel-descripcion {
+    max-width: 650px;
+    margin: 0;
+    color: var(--ronem-gris);
+    font-size: 1.03rem;
+}
+
+.btn-nuevo-vehiculo {
+    padding: 13px 23px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(215, 25, 32, 0.2);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+/*=====================================
+TARJETAS DE RESUMEN
+======================================*/
+
+.resumen-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 104px;
+    padding: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27, 27, 27, 0.96),
+            rgba(15, 15, 15, 0.96)
+        );
+    border: 1px solid var(--ronem-borde);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.resumen-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(215, 25, 32, 0.42);
+}
+
+.resumen-icono {
+    display: grid;
+    place-items: center;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    color: white;
+    background: rgba(215, 25, 32, 0.16);
+    border: 1px solid rgba(215, 25, 32, 0.35);
+    border-radius: 14px;
+    font-size: 1.65rem;
+}
+
+.resumen-icono-activo {
+    color: #a8ffc1;
+    background: rgba(31, 150, 74, 0.13);
+    border-color: rgba(31, 150, 74, 0.33);
+}
+
+.resumen-icono-inactivo {
+    color: #ffc0c2;
+    background: rgba(160, 31, 37, 0.14);
+    border-color: rgba(160, 31, 37, 0.32);
+}
+
+.resumen-numero {
+    display: block;
+    font-family: "League Spartan", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.resumen-texto {
+    display: block;
+    margin-top: 5px;
+    color: var(--ronem-gris);
+    font-size: 0.86rem;
+}
+
+/*=====================================
+BUSCADOR Y FILTROS
+======================================*/
+
+.filtros-vehiculos {
+    padding: 18px;
+    margin-bottom: 25px;
+    background: rgba(18, 18, 18, 0.82);
+    border: 1px solid var(--ronem-borde);
+    border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.buscador-panel .input-group-text,
+.buscador-panel .form-control,
+.filtro-select {
+    min-height: 48px;
+    color: white;
+    background: var(--ronem-panel-claro);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.buscador-panel .input-group-text {
+    color: var(--ronem-rojo);
+    border-right: 0;
+}
+
+.buscador-panel .form-control {
+    border-left: 0;
+}
+
+.buscador-panel .form-control::placeholder {
+    color: #777;
+}
+
+.buscador-panel .form-control:focus,
+.filtro-select:focus {
+    color: white;
+    background: var(--ronem-panel-claro);
+    border-color: var(--ronem-rojo);
+    box-shadow: 0 0 0 0.2rem rgba(215, 25, 32, 0.14);
+}
+
+.buscador-panel .form-control:focus {
+    border-left: 0;
+}
+
+.filtro-select option {
+    color: white;
+    background: #171717;
+}
+
+/*=====================================
+ESTADOS VACÍOS Y CARGA
+======================================*/
+
+.estado-carga,
+.sin-vehiculos,
+.sin-resultados {
+    padding: 76px 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    background: rgba(18, 18, 18, 0.72);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+}
+
+.estado-carga p {
+    margin: 14px 0 0;
+    color: var(--ronem-gris);
+}
+
+.sin-vehiculos-icono {
+    display: grid;
+    place-items: center;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 20px;
+    color: var(--ronem-rojo);
+    background: rgba(215, 25, 32, 0.1);
+    border: 1px solid rgba(215, 25, 32, 0.25);
+    border-radius: 50%;
+    font-size: 3rem;
+}
+
+.sin-vehiculos h2,
+.sin-resultados h2 {
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.sin-vehiculos p,
+.sin-resultados p {
+    max-width: 570px;
+    margin-right: auto;
+    margin-bottom: 22px;
+    margin-left: auto;
+    color: var(--ronem-gris);
+}
+
+.sin-resultados > i {
+    color: var(--ronem-rojo);
+    font-size: 3.2rem;
+}
+
+/*=====================================
+TARJETAS DE VEHÍCULOS
+======================================*/
+
+.vehiculo-card {
+    height: 100%;
+    overflow: hidden;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    box-shadow: none;
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease;
+}
+
+.vehiculo-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(215, 25, 32, 0.55);
+    box-shadow: none;
+}
+
+.vehiculo-imagen {
+    position: relative;
+    height: 235px;
+    overflow: hidden;
+    background: #080808;
+}
+
+.vehiculo-imagen::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: "";
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.82),
+            transparent 58%
+        );
+    pointer-events: none;
+}
+
+.vehiculo-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.vehiculo-card:hover .vehiculo-imagen img {
+    transform: scale(1.05);
+}
+
+.estado-chip,
+.tipo-chip {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    padding: 6px 11px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(9px);
+}
+
+.tipo-chip {
+    left: 14px;
+    color: white;
+    background: rgba(5, 5, 5, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.estado-chip {
+    right: 14px;
+}
+
+.estado-chip.activo {
+    color: #c8ffd5;
+    background: rgba(31, 132, 67, 0.79);
+    border: 1px solid rgba(125, 255, 165, 0.18);
+}
+
+.estado-chip.inactivo {
+    color: #ffd0d2;
+    background: rgba(160, 24, 31, 0.82);
+    border: 1px solid rgba(255, 130, 135, 0.17);
+}
+
+.vehiculo-contenido {
+    padding: 22px;
+}
+
+.vehiculo-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid var(--ronem-borde);
+}
+
+.vehiculo-titulo small {
+    color: var(--ronem-rojo);
+    font-size: 0.69rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.vehiculo-titulo h2 {
+    margin: 2px 0 0;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.modelo-chip {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    color: white;
+    background: rgba(215, 25, 32, 0.13);
+    border: 1px solid rgba(215, 25, 32, 0.35);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.vehiculo-datos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    padding: 19px 0;
+}
+
+.vehiculo-dato {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.vehiculo-dato i {
+    flex: 0 0 auto;
+    color: var(--ronem-rojo);
+    font-size: 1.1rem;
+}
+
+.vehiculo-dato-contenido {
+    min-width: 0;
+}
+
+.vehiculo-dato small {
+    display: block;
+    margin-bottom: 1px;
+    color: #747474;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.vehiculo-dato strong {
+    display: block;
+    overflow-wrap: anywhere;
+    color: #efefef;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.vehiculo-acciones {
+    display: flex;
+    gap: 10px;
+    padding-top: 17px;
+    border-top: 1px solid var(--ronem-borde);
+}
+
+.vehiculo-acciones .btn {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+/*=====================================
+ALERTAS
+======================================*/
+
+.alerta-panel {
+    color: white;
+    background: rgba(20, 20, 20, 0.96);
+    border-color: var(--ronem-borde);
+    border-radius: 12px;
+}
+
+.alerta-panel.alert-success {
+    border-left: 4px solid #33b96a;
+}
+
+.alerta-panel.alert-danger {
+    border-left: 4px solid var(--ronem-rojo);
+}
+
+.alerta-panel.alert-warning {
+    border-left: 4px solid #e0a800;
+}
+
+/*=====================================
+MODAL DE VEHÍCULO
+======================================*/
+
+.modal-vehiculo {
+    overflow: hidden;
+    color: white;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 20px;
+    box-shadow: 0 28px 85px rgba(0, 0, 0, 0.7);
+}
+
+.modal-vehiculo .modal-header {
+    padding: 23px 26px;
+    background: #101010;
+    border-color: var(--ronem-borde);
+}
+
+.modal-etiqueta {
+    color: var(--ronem-rojo);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+}
+
+.modal-vehiculo .modal-title {
+    margin-top: 3px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.modal-vehiculo .modal-body {
+    padding: 26px;
+}
+
+.modal-vehiculo .modal-footer {
+    padding: 18px 26px;
+    background: rgba(255, 255, 255, 0.018);
+    border-color: var(--ronem-borde);
+}
+
+.modal-vehiculo .modal-footer .btn {
+    min-width: 145px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.modal-vehiculo .form-label {
+    color: #cecece;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.modal-vehiculo .form-control,
+.modal-vehiculo .form-select,
+.modal-vehiculo .input-group-text {
+    min-height: 47px;
+    color: white;
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+.modal-vehiculo .input-group-text {
+    color: #909090;
+}
+
+.modal-vehiculo .form-control::placeholder {
+    color: #686868;
+}
+
+.modal-vehiculo .form-control:focus,
+.modal-vehiculo .form-select:focus {
+    color: white;
+    background: #1a1a1a;
+    border-color: var(--ronem-rojo);
+    box-shadow: 0 0 0 0.2rem rgba(215, 25, 32, 0.15);
+}
+
+.modal-vehiculo .form-select option {
+    color: white;
+    background: #171717;
+}
+
+.modal-vehiculo .form-text {
+    font-size: 0.78rem;
+}
+
+.modal-vehiculo .invalid-feedback {
+    font-size: 0.76rem;
+}
+
+/*=====================================
+PANEL DE IMAGEN
+======================================*/
+
+.imagen-vehiculo-panel {
+    position: sticky;
+    top: 0;
+    padding: 18px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28, 28, 28, 0.98),
+            rgba(17, 17, 17, 0.98)
+        );
+    border: 1px solid var(--ronem-borde);
+    border-radius: 16px;
+}
+
+.imagen-preview-contenedor {
+    position: relative;
+    height: 285px;
+    overflow: hidden;
+    background: #080808;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 13px;
+}
+
+.imagen-preview-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagen-preview-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px;
+    color: rgba(255, 255, 255, 0.82);
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.12)
+    );
+    font-size: 0.82rem;
+}
+
+.imagen-ayuda {
+    display: block;
+    margin-top: 11px;
+    color: #777;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.imagen-ayuda span {
+    display: block;
+}
+
+/*=====================================
+MODAL ELIMINAR
+======================================*/
+
+.modal-eliminar {
+    overflow: hidden;
+    color: white;
+    background: #101010;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 18px;
+    box-shadow: 0 28px 75px rgba(0, 0, 0, 0.7);
+}
+
+.modal-eliminar .modal-body {
+    padding: 35px;
+}
+
+.eliminar-icono {
+    display: grid;
+    place-items: center;
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 19px;
+    color: white;
+    background: rgba(215, 25, 32, 0.16);
+    border: 1px solid rgba(215, 25, 32, 0.45);
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.modal-eliminar h2 {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.modal-eliminar p {
+    color: var(--ronem-gris);
+}
+
+.modal-eliminar .alert-warning {
+    color: #f3d68c;
+    background: rgba(155, 112, 0, 0.13);
+    border-color: rgba(224, 168, 0, 0.26);
+}
+
+/*=====================================
+SCROLLBAR
+======================================*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d2d2d;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ronem-rojo);
+}
+
+/*=====================================
+DISEÑO RESPONSIVE
+======================================*/
+
+@media (max-width: 991px) {
+
+    .panel-navbar .navbar-collapse {
+        padding: 18px 0 5px;
+    }
+
+    .panel-navbar .nav-link {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+
+    .panel-navbar .nav-link::after {
+        right: 5px;
+        left: 5px;
+        transform-origin: left;
+    }
+
+    .panel-navbar .dropdown {
+        margin-top: 12px;
+    }
+
+    .panel-encabezado {
+        padding: 28px;
+    }
+
+    .btn-nuevo-vehiculo {
+        width: 100%;
+    }
+
+    .imagen-vehiculo-panel {
+        position: static;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .panel-contenido {
+        padding-top: 102px;
+    }
+
+    .panel-encabezado {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .panel-titulo {
+        font-size: 2.6rem;
+    }
+
+    .panel-descripcion {
+        font-size: 0.93rem;
+    }
+
+    .resumen-card {
+        min-height: 92px;
+    }
+
+    .vehiculo-datos {
+        grid-template-columns: 1fr;
+    }
+
+    .vehiculo-acciones {
+        flex-direction: column;
+    }
+
+    .vehiculo-imagen {
+        height: 220px;
+    }
+
+    .modal-vehiculo .modal-header,
+    .modal-vehiculo .modal-body,
+    .modal-vehiculo .modal-footer {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .modal-vehiculo .modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .modal-vehiculo .modal-footer .btn {
+        width: 100%;
+    }
+
+    .imagen-preview-contenedor {
+        height: 240px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .panel-logo {
+        width: 39px;
+        height: 39px;
+    }
+
+    .panel-brand {
+        font-size: 0.92rem;
+    }
+
+    .panel-brand-sub {
+        font-size: 0.58rem;
+    }
+
+    .panel-encabezado {
+        padding: 20px;
+    }
+
+    .panel-titulo {
+        font-size: 2.2rem;
+    }
+
+    .filtros-vehiculos {
+        padding: 14px;
+    }
+
+    .vehiculo-contenido {
+        padding: 18px;
+    }
+
+    .vehiculo-titulo {
+        flex-direction: column;
+    }
+
+    .modelo-chip {
+        align-self: flex-start;
+    }
+
+    .modal-eliminar .modal-body {
+        padding: 27px 20px;
+    }
+
+}

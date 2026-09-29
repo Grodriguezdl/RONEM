@@ -1,0 +1,1178 @@
+/*==================================================
+  VARIABLES
+==================================================*/
+
+:root {
+    --rojo: #d9232e;
+    --rojo-oscuro: #a81720;
+    --rojo-suave: rgba(217, 35, 46, 0.14);
+
+    --negro: #08090b;
+    --fondo: #0d0f12;
+    --panel: #14171b;
+    --panel-secundario: #191c21;
+    --borde: rgba(255, 255, 255, 0.09);
+
+    --blanco: #ffffff;
+    --texto: #f4f4f4;
+    --texto-secundario: #a8adb5;
+    --texto-oscuro: #747983;
+
+    --verde: #28c76f;
+    --amarillo: #ffb020;
+    --azul: #3f8cff;
+
+    --radio-panel: 20px;
+    --radio-elemento: 14px;
+
+    --sombra:
+        0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+
+/*==================================================
+  GENERAL
+==================================================*/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(217, 35, 46, 0.08),
+            transparent 30%
+        ),
+        var(--fondo);
+
+    color: var(--texto);
+    font-family: "PT Sans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/*==================================================
+  SCROLLBAR
+==================================================*/
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0d10;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #383c43;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rojo);
+}
+
+
+/*==================================================
+  NAVBAR
+==================================================*/
+
+.panel-navbar {
+    min-height: 78px;
+    background: rgba(8, 9, 11, 0.97);
+    border-bottom: 1px solid var(--borde);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+    z-index: 1050;
+}
+
+.panel-logo {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.panel-brand {
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+}
+
+.panel-brand-sub {
+    margin-top: 3px;
+    color: var(--rojo);
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+}
+
+.panel-navbar .navbar-nav .nav-link {
+    position: relative;
+    padding: 0.65rem 0.9rem;
+    color: #b7bbc2;
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+.panel-navbar .navbar-nav .nav-link::after {
+    position: absolute;
+    right: 50%;
+    bottom: 2px;
+    left: 50%;
+    height: 2px;
+    background: var(--rojo);
+    border-radius: 999px;
+    content: "";
+
+    transition:
+        right 0.25s ease,
+        left 0.25s ease;
+}
+
+.panel-navbar .navbar-nav .nav-link:hover,
+.panel-navbar .navbar-nav .nav-link.active {
+    color: var(--blanco);
+}
+
+.panel-navbar .navbar-nav .nav-link:hover::after,
+.panel-navbar .navbar-nav .nav-link.active::after {
+    right: 18%;
+    left: 18%;
+}
+
+.panel-dropdown {
+    min-width: 210px;
+    padding: 0.55rem;
+    background: #121419;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    box-shadow: var(--sombra);
+}
+
+.panel-dropdown .dropdown-item {
+    padding: 0.65rem 0.8rem;
+    border-radius: 9px;
+    font-size: 0.9rem;
+}
+
+.panel-dropdown .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+/*==================================================
+  CONTENIDO PRINCIPAL
+==================================================*/
+
+.panel-contenido {
+    min-height: 100vh;
+    padding-top: 118px;
+    padding-bottom: 55px;
+}
+
+.panel-encabezado {
+    margin-bottom: 28px;
+}
+
+.panel-etiqueta,
+.seccion-etiqueta {
+    color: var(--rojo);
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.panel-titulo {
+    margin: 5px 0 0;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: clamp(2.3rem, 5vw, 4.3rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+}
+
+.panel-titulo span {
+    color: var(--rojo);
+}
+
+.panel-descripcion {
+    max-width: 760px;
+    margin: 14px 0 0;
+    color: var(--texto-secundario);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.btn-actualizar {
+    min-height: 46px;
+    padding: 0.75rem 1.25rem;
+    background: var(--rojo);
+    border-color: var(--rojo);
+    border-radius: 12px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: 0 10px 25px rgba(217, 35, 46, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-actualizar:hover {
+    background: var(--rojo-oscuro);
+    border-color: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(217, 35, 46, 0.3);
+}
+
+
+/*==================================================
+  ALERTAS
+==================================================*/
+
+#alertaMotoescuela {
+    margin-bottom: 20px;
+}
+
+#alertaMotoescuela:empty {
+    display: none;
+}
+
+.alerta-motoescuela {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 18px;
+    gap: 12px;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: 0.92rem;
+}
+
+.alerta-motoescuela i {
+    margin-top: 1px;
+    font-size: 1.1rem;
+}
+
+.alerta-exito {
+    background: rgba(40, 199, 111, 0.1);
+    color: #98f5bd;
+    border-color: rgba(40, 199, 111, 0.25);
+}
+
+.alerta-error {
+    background: rgba(217, 35, 46, 0.11);
+    color: #ffadb3;
+    border-color: rgba(217, 35, 46, 0.28);
+}
+
+.alerta-advertencia {
+    background: rgba(255, 176, 32, 0.1);
+    color: #ffd58a;
+    border-color: rgba(255, 176, 32, 0.25);
+}
+
+
+/*==================================================
+  CARGA GENERAL
+==================================================*/
+
+.estado-carga-principal,
+.sin-solicitud {
+    display: flex;
+    min-height: 430px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 25px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.02),
+            transparent
+        ),
+        var(--panel);
+
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-panel);
+    box-shadow: var(--sombra);
+}
+
+.estado-carga-principal h2 {
+    margin: 20px 0 7px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+}
+
+.estado-carga-principal p {
+    margin: 0;
+    color: var(--texto-secundario);
+}
+
+.sin-solicitud-icono {
+    display: grid;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 20px;
+    place-items: center;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    border: 1px solid rgba(217, 35, 46, 0.24);
+    border-radius: 50%;
+    font-size: 2.5rem;
+}
+
+.sin-solicitud-etiqueta {
+    color: var(--rojo);
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.sin-solicitud h2 {
+    margin: 7px 0 10px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.sin-solicitud p {
+    max-width: 620px;
+    margin: 0 0 23px;
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.sin-solicitud .btn {
+    min-height: 45px;
+    padding: 0.7rem 1.2rem;
+    border-radius: 11px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+
+/*==================================================
+  RESUMEN
+==================================================*/
+
+.resumen-card {
+    display: flex;
+    align-items: center;
+    min-height: 118px;
+    height: 100%;
+    padding: 21px;
+    gap: 17px;
+    overflow: hidden;
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.008)
+        ),
+        var(--panel);
+
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-panel);
+    box-shadow: var(--sombra);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.resumen-card::before {
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    width: 120px;
+    height: 120px;
+    background: rgba(217, 35, 46, 0.08);
+    border-radius: 50%;
+    content: "";
+}
+
+.resumen-card:hover {
+    border-color: rgba(217, 35, 46, 0.38);
+    transform: translateY(-4px);
+}
+
+.resumen-icono {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    place-items: center;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    border: 1px solid rgba(217, 35, 46, 0.24);
+    border-radius: 17px;
+    font-size: 1.6rem;
+}
+
+.resumen-icono-progreso {
+    background: rgba(40, 199, 111, 0.12);
+    color: var(--verde);
+    border-color: rgba(40, 199, 111, 0.24);
+}
+
+.resumen-icono-solicitud {
+    background: rgba(63, 140, 255, 0.12);
+    color: var(--azul);
+    border-color: rgba(63, 140, 255, 0.24);
+}
+
+.resumen-icono-fecha {
+    background: rgba(255, 176, 32, 0.12);
+    color: var(--amarillo);
+    border-color: rgba(255, 176, 32, 0.24);
+}
+
+.resumen-contenido {
+    min-width: 0;
+}
+
+.resumen-etiqueta {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--texto-secundario);
+    font-size: 0.8rem;
+}
+
+.resumen-valor {
+    display: block;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.resumen-valor-texto {
+    overflow: hidden;
+    font-size: 1.1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.resumen-valor-fecha {
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+
+/*==================================================
+  PANEL DE PROGRESO
+==================================================*/
+
+.progreso-panel,
+.solicitud-panel,
+.historial-panel {
+    margin-bottom: 24px;
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.02),
+            transparent
+        ),
+        var(--panel);
+
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-panel);
+    box-shadow: var(--sombra);
+}
+
+.progreso-panel h2 {
+    margin: 5px 0 8px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.progreso-panel > .row > div:first-child > p {
+    max-width: 750px;
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.progreso-informacion {
+    margin-top: 27px;
+}
+
+.progreso-textos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progreso-textos span {
+    color: var(--texto-secundario);
+    font-size: 0.86rem;
+}
+
+.progreso-textos strong {
+    color: var(--rojo);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.05rem;
+}
+
+.progreso-barra-contenedor {
+    height: 15px;
+    overflow: hidden;
+    background: #292c31;
+    border-radius: 999px;
+}
+
+.progreso-barra {
+    background:
+        linear-gradient(
+            90deg,
+            var(--rojo-oscuro),
+            var(--rojo)
+        );
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(217, 35, 46, 0.38);
+
+    transition: width 0.7s ease;
+}
+
+
+/*==================================================
+  CÍRCULO DE PROGRESO
+==================================================*/
+
+.progreso-circulo {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    margin: 0 auto;
+}
+
+.progreso-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progreso-circulo-fondo,
+.progreso-circulo-valor {
+    fill: none;
+    stroke-width: 13;
+}
+
+.progreso-circulo-fondo {
+    stroke: #292c31;
+}
+
+.progreso-circulo-valor {
+    stroke: var(--rojo);
+    stroke-linecap: round;
+    stroke-dasharray: 414.69;
+    stroke-dashoffset: 414.69;
+    filter: drop-shadow(
+        0 0 8px rgba(217, 35, 46, 0.4)
+    );
+
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.progreso-circulo-contenido {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.progreso-circulo-contenido strong {
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 2.55rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.progreso-circulo-contenido span {
+    margin-top: 7px;
+    color: var(--texto-secundario);
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+
+/*==================================================
+  ENCABEZADOS DE SECCIÓN
+==================================================*/
+
+.seccion-encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 20px;
+}
+
+.seccion-encabezado h2 {
+    margin: 4px 0 6px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.seccion-encabezado p {
+    max-width: 690px;
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.seccion-icono {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    place-items: center;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    border: 1px solid rgba(217, 35, 46, 0.22);
+    border-radius: 15px;
+    font-size: 1.35rem;
+}
+
+
+/*==================================================
+  DATOS DE SOLICITUD
+==================================================*/
+
+.datos-solicitud-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.dato-solicitud {
+    min-width: 0;
+    padding: 18px;
+    background: var(--panel-secundario);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-elemento);
+}
+
+.dato-solicitud-ancho {
+    grid-column: span 3;
+}
+
+.dato-solicitud span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--texto-oscuro);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.dato-solicitud strong {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--blanco);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+
+/*==================================================
+  HISTORIAL
+==================================================*/
+
+.historial-cargando,
+.historial-vacio {
+    display: flex;
+    min-height: 250px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px dashed rgba(255, 255, 255, 0.09);
+    border-radius: var(--radio-elemento);
+}
+
+.historial-cargando p {
+    margin: 14px 0 0;
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+}
+
+.historial-vacio-icono {
+    display: grid;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 17px;
+    place-items: center;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    border-radius: 50%;
+    font-size: 1.8rem;
+}
+
+.historial-vacio h3 {
+    margin: 0 0 7px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.historial-vacio p {
+    max-width: 470px;
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+
+/*==================================================
+  LÍNEA DE TIEMPO
+==================================================*/
+
+.linea-tiempo {
+    position: relative;
+    padding-left: 35px;
+}
+
+.linea-tiempo::before {
+    position: absolute;
+    top: 7px;
+    bottom: 7px;
+    left: 10px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    content: "";
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 25px 22px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-punto {
+    position: absolute;
+    top: 4px;
+    left: -33px;
+    display: grid;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    background: var(--panel);
+    border: 4px solid var(--rojo);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(217, 35, 46, 0.1);
+}
+
+.timeline-card {
+    padding: 19px;
+    background: var(--panel-secundario);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-elemento);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.timeline-card:hover {
+    border-color: rgba(217, 35, 46, 0.3);
+    transform: translateX(3px);
+}
+
+.timeline-superior {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.timeline-estado {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.7rem;
+    gap: 6px;
+    background: var(--rojo-suave);
+    color: #ff9da4;
+    border: 1px solid rgba(217, 35, 46, 0.24);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.timeline-porcentaje {
+    color: var(--rojo);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.timeline-card h3 {
+    margin: 13px 0 7px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.timeline-cambio {
+    margin: 0 0 11px;
+    color: var(--texto-secundario);
+    font-size: 0.87rem;
+}
+
+.timeline-comentario {
+    margin: 0;
+    padding: 13px 15px;
+    background: rgba(255, 255, 255, 0.025);
+    color: #d4d6da;
+    border-left: 3px solid var(--rojo);
+    border-radius: 0 9px 9px 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.timeline-fecha {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 13px;
+    color: var(--texto-oscuro);
+    font-size: 0.76rem;
+}
+
+
+/*==================================================
+  CURSO COMPLETADO
+==================================================*/
+
+.curso-completado {
+    display: flex;
+    align-items: center;
+    padding: 24px 26px;
+    gap: 19px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(40, 199, 111, 0.17),
+            rgba(40, 199, 111, 0.035)
+        ),
+        var(--panel);
+
+    border: 1px solid rgba(40, 199, 111, 0.26);
+    border-radius: var(--radio-panel);
+    box-shadow: var(--sombra);
+}
+
+.curso-completado-icono {
+    display: grid;
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    place-items: center;
+    background: rgba(40, 199, 111, 0.14);
+    color: var(--verde);
+    border: 1px solid rgba(40, 199, 111, 0.25);
+    border-radius: 18px;
+    font-size: 1.8rem;
+}
+
+.curso-completado span {
+    color: var(--verde);
+    font-family: "League Spartan", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.curso-completado h2 {
+    margin: 4px 0 5px;
+    color: var(--blanco);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.curso-completado p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+
+/*==================================================
+  UTILIDADES
+==================================================*/
+
+.d-none {
+    display: none !important;
+}
+
+
+/*==================================================
+  RESPONSIVE
+==================================================*/
+
+@media (max-width: 991.98px) {
+
+    .panel-navbar {
+        min-height: 72px;
+    }
+
+    .panel-navbar .navbar-collapse {
+        margin-top: 12px;
+        padding: 16px;
+        background: #101216;
+        border: 1px solid var(--borde);
+        border-radius: 15px;
+    }
+
+    .panel-navbar .navbar-nav .nav-link {
+        padding: 0.75rem 0.85rem;
+        border-radius: 9px;
+    }
+
+    .panel-navbar .navbar-nav .nav-link::after {
+        display: none;
+    }
+
+    .panel-navbar .navbar-nav .nav-link:hover,
+    .panel-navbar .navbar-nav .nav-link.active {
+        background: rgba(217, 35, 46, 0.12);
+    }
+
+    .panel-navbar .dropdown {
+        margin-top: 12px;
+    }
+
+    .panel-navbar .dropdown > button {
+        width: 100%;
+    }
+
+    .panel-contenido {
+        padding-top: 105px;
+    }
+
+    .datos-solicitud-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .dato-solicitud-ancho {
+        grid-column: span 2;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .panel-contenido {
+        padding-bottom: 35px;
+    }
+
+    .panel-titulo {
+        font-size: 2.65rem;
+    }
+
+    .panel-descripcion {
+        font-size: 0.94rem;
+    }
+
+    .btn-actualizar {
+        width: 100%;
+    }
+
+    .resumen-card {
+        min-height: 105px;
+        padding: 18px;
+    }
+
+    .resumen-icono {
+        width: 53px;
+        height: 53px;
+        font-size: 1.45rem;
+    }
+
+    .resumen-valor {
+        font-size: 1.6rem;
+    }
+
+    .resumen-valor-texto {
+        font-size: 1.05rem;
+    }
+
+    .progreso-panel,
+    .solicitud-panel,
+    .historial-panel {
+        padding: 21px;
+    }
+
+    .progreso-panel h2 {
+        font-size: 1.65rem;
+    }
+
+    .seccion-encabezado h2 {
+        font-size: 1.4rem;
+    }
+
+    .progreso-circulo {
+        width: 185px;
+        height: 185px;
+    }
+
+    .progreso-circulo-contenido strong {
+        font-size: 2.2rem;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .panel-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .panel-brand {
+        font-size: 0.95rem;
+    }
+
+    .panel-brand-sub {
+        font-size: 0.55rem;
+    }
+
+    .panel-contenido {
+        padding-top: 96px;
+    }
+
+    .panel-titulo {
+        font-size: 2.25rem;
+    }
+
+    .estado-carga-principal,
+    .sin-solicitud {
+        min-height: 360px;
+        padding: 30px 18px;
+    }
+
+    .progreso-panel,
+    .solicitud-panel,
+    .historial-panel {
+        padding: 17px;
+        border-radius: 16px;
+    }
+
+    .seccion-encabezado {
+        flex-direction: column;
+    }
+
+    .seccion-icono {
+        display: none;
+    }
+
+    .datos-solicitud-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dato-solicitud-ancho {
+        grid-column: span 1;
+    }
+
+    .linea-tiempo {
+        padding-left: 27px;
+    }
+
+    .linea-tiempo::before {
+        left: 8px;
+    }
+
+    .timeline-item {
+        padding-left: 17px;
+    }
+
+    .timeline-punto {
+        left: -27px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-superior {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .curso-completado {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+}

@@ -1,0 +1,1214 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES / PALETA DE COLORES
+   ========================================================================== */
+:root {
+  --cream: #e3dee0;          /* Color crema claro para textos y contrastes */
+  --red: #ca2942;            /* Rojo primario de la marca RONEM */
+  --red-dark: #c60b26;       /* Rojo oscuro para hover/estados activos */
+  --black: #060807;          /* Fondo negro principal */
+  --white: #ffffff;          /* Blanco puro */
+  --gray-bg: #f0eced;        /* Fondo gris claro general de la app */
+  --gray-border: #d8d2d4;    /* Color para bordes y separadores */
+  --text-muted: #6b5f62;     /* Texto secundario/deshabilitado */
+  --row-alt: #f7f3f4;        /* Fondo alternado en filas de tablas */
+  --green: #198754;          /* Verde para alertas/estados positivos */
+  --orange: #f59e0b;         /* Naranja para advertencias o stock bajo */
+  --yellow-soft: #fff4d6;    /* Fondo amarillo suave para tarjetas */
+  --red-soft: #fde7eb;       /* Fondo rojo suave para etiquetas/íconos */
+  --green-soft: #e8f5ee;     /* Fondo verde suave */
+}
+
+/* ==========================================================================
+   2. REINICIO GLOBAL DE ESTILOS (RESET)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Manejo exacto del ancho/alto incluyendo padding */
+  margin: 0;              /* Elimina márgenes por defecto */
+  padding: 0;             /* Elimina paddings por defecto */
+}
+
+html {
+  scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en anclas */
+}
+
+body {
+  font-family: "Barlow", sans-serif; /* Tipografía principal */
+  background: var(--gray-bg);        /* Fondo gris suave */
+  color: var(--black);              /* Texto color negro primario */
+  min-height: 100vh;                 /* Asegura que el cuerpo ocupe toda la pantalla */
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================================================== */
+
+.navbar-ronem {
+  display: grid;
+  grid-template-columns:
+    minmax(150px, 185px)
+    minmax(0, 1fr)
+    minmax(150px, 180px);
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 64px;
+  padding: 0 24px;
+  background: var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  box-shadow: 0 4px 14px rgba(6, 8, 7, 0.25);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.nav-logo-box {
+  width: 40px;
+  height: 40px;
+  background: transparent !important;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.nav-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.1;
+}
+
+.nav-wordmark .nw-main {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+}
+
+.nav-wordmark .nw-sub {
+  font-size: 10px;
+  color: #a09598;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0;
+  min-width: 0;
+  height: 64px;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  min-width: max-content;
+  padding: 0 clamp(8px, 1vw, 16px);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 0.84vw, 12.5px);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #d1cacc;
+  background: transparent !important;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.nav-link-item:not(.active) {
+  background: transparent !important;
+  color: #d1cacc !important;
+}
+
+.nav-link-item:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom-color: var(--red);
+}
+
+.nav-link-item.active {
+  color: #ffffff !important;
+  background: var(--red) !important;
+  border-bottom-color: var(--red-dark);
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA DE PÁGINAS Y TARJETAS GENERALE
+   ========================================================================== */
+.page {
+  display: none;       /* Las páginas no activas están ocultas */
+  padding: 32px 28px;
+}
+
+.page.active {
+  display: block;      /* Muestra la página actual activa */
+}
+
+.card-ronem {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 1px 4px rgba(6, 8, 7, 0.07);
+}
+
+.card-title-ronem {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   5. BOTONES DE LA APLICACIÓN
+   ========================================================================== */
+.btn-ronem {
+  background: var(--red);
+  color: #ffffff;
+  border: none;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 5px;
+  padding: 9px 18px;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-ronem:hover,
+.btn-ronem:focus {
+  background: var(--red-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(202, 41, 66, 0.2);
+}
+
+.btn-ronem:active {
+  transform: translateY(1px); /* Efecto de pulsación al presionar */
+}
+
+.btn-ronem:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-ronem-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.btn-pdf {
+  background: var(--black);
+}
+
+.btn-pdf:hover,
+.btn-pdf:focus {
+  background: #252826;
+}
+
+/* ==========================================================================
+   6. BUSCADORES E INPUTS DE FILTRADO
+   ========================================================================== */
+.search-wrap {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.search-wrap .si {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--gray-border);
+  border-radius: 6px;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  background: var(--gray-bg);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.search-input:focus {
+  border-color: var(--red);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(202, 41, 66, 0.1);
+}
+
+/* ==========================================================================
+   7. TABLAS DE DATOS
+   ========================================================================== */
+.tbl-wrap {
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead tr {
+  background: var(--black);
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--gray-border);
+  transition: background 0.15s;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--row-alt); /* Filas intercaladas en gris tenue */
+}
+
+tbody tr:hover {
+  background: #f0e8ea;        /* Resaltado al pasar el ratón */
+}
+
+tbody td {
+  padding: 13px 16px;
+  vertical-align: middle;
+}
+
+.empty-row td {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px;
+}
+
+.td-id {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* Chips / Badges para las tablas */
+.summary-chip {
+  background: var(--red);
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.badge-on {
+  background: var(--red);
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-off {
+  background: var(--black);
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.section-gap {
+  margin-top: 28px;
+}
+
+/* ==========================================================================
+   8. FORMULARIOS Y CAMPOS DE TEXTO
+   ========================================================================== */
+.form-section-bg {
+  background: #f0eced;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.file-drop {
+  border: 2px dashed var(--red);
+  border-radius: 6px;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+}
+
+.ronem-textarea {
+  width: 100%;
+  min-height: 110px;
+  border: 1.5px solid var(--red);
+  border-radius: 6px;
+  padding: 12px;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.ronem-textarea:focus {
+  border-color: var(--red-dark);
+  box-shadow: 0 0 0 3px rgba(202, 41, 66, 0.1);
+}
+
+/* ==========================================================================
+   9. VENTANAS MODALES (EMERGENTES)
+   ========================================================================== */
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(6, 8, 7, 0.2);
+  font-family: "Barlow", sans-serif;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 22px 24px 6px;
+}
+
+.modal-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--black);
+}
+
+.modal-header .btn-close {
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath stroke='%23CA2942' stroke-width='2' stroke-linecap='round' d='M2 2l12 12M14 2L2 14'/%3E%3C/svg%3E")
+    center/14px no-repeat;
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 14px 24px 20px;
+}
+
+.modal-footer {
+  border-top: none;
+  padding: 0 24px 22px;
+}
+
+.modal .form-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--black);
+  margin-bottom: 5px;
+}
+
+.modal .form-control,
+.modal .form-select {
+  border: 1.5px solid #d8d2d4;
+  border-radius: 8px;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(202, 41, 66, 0.1);
+  outline: none;
+}
+
+.modal .form-control::placeholder {
+  color: #b5adb0;
+}
+
+.modal-save-btn {
+  width: 100%;
+  background: var(--red);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+
+.modal-save-btn:hover {
+  background: var(--red-dark);
+}
+
+/* ==========================================================================
+   10. DASHBOARD ADMINISTRATIVO
+   ========================================================================== */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.dashboard-subtitle {
+  margin: 5px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.dashboard-update-btn {
+  flex-shrink: 0;
+}
+
+/* Rejilla (Grid) principal para métricas de tarjetas */
+.dashboard-grid,
+#dashboardPage > div:has(i),
+#dashboardPage .row:first-of-type {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  margin-bottom: 22px !important;
+}
+
+/* Tarjetas métricas del dashboard */
+.dashboard-card,
+#dashboardPage p:has(i),
+#dashboardPage div:has(> i) {
+  background: var(--white) !important;
+  border-radius: 10px !important;
+  padding: 20px 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 17px !important;
+  box-shadow: 0 2px 8px rgba(6, 8, 7, 0.07) !important;
+  border: 1px solid var(--gray-border) !important;
+  border-left: 5px solid var(--red) !important;
+  transition: transform 0.18s, box-shadow 0.18s !important;
+  font-size: 14px !important;
+  color: var(--black) !important;
+}
+
+.dashboard-card:hover,
+#dashboardPage p:has(i):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(6, 8, 7, 0.11) !important;
+}
+
+.dashboard-card-warning {
+  border-left-color: var(--orange) !important;
+}
+
+/* Íconos dentro de las tarjetas métricas */
+.dashboard-card-icon,
+#dashboardPage i,
+#dashboardPage svg {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 10px !important;
+  background: var(--red-soft) !important;
+  color: var(--red) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 23px !important;
+  flex-shrink: 0 !important;
+}
+
+.dashboard-card-warning .dashboard-card-icon {
+  background: var(--yellow-soft) !important;
+  color: var(--orange) !important;
+}
+
+.dashboard-card-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-card-title {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.dashboard-card-value,
+#dashboardPage strong,
+#dashboardPage b {
+  font-family: "Barlow Condensed", sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  color: var(--black) !important;
+}
+
+.dashboard-card-detail {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.dashboard-summary-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.dashboard-summary-card,
+.dashboard-quick-card {
+  min-height: 100%;
+}
+
+.monthly-summary {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.monthly-summary-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.monthly-summary-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.monthly-summary-value {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 27px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.monthly-summary-divider {
+  width: 1px;
+  min-height: 60px;
+  background: var(--gray-border);
+}
+
+.dashboard-comparison {
+  margin-top: 23px;
+  padding: 11px 13px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.comparacion-positiva {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.comparacion-negativa {
+  background: var(--red-soft);
+  color: var(--red-dark);
+}
+
+.comparacion-neutral {
+  background: var(--gray-bg);
+  color: var(--text-muted);
+}
+
+/* Botones de accesos rápidos dentro del dashboard */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.quick-action {
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+  border-radius: 8px;
+  padding: 17px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: var(--black);
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.quick-action i {
+  font-size: 21px;
+  color: var(--red);
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.quick-action:hover {
+  background: var(--red);
+  color: #ffffff;
+  border-color: var(--red);
+  transform: translateY(-1px);
+}
+
+.quick-action:hover i {
+  color: #ffffff;
+}
+
+.dashboard-chart-card,
+.dashboard-table-card {
+  margin-bottom: 22px;
+}
+
+.dashboard-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.dashboard-section-description {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.dashboard-chart-container {
+  width: 100%;
+  height: 350px;
+  position: relative;
+}
+
+.dashboard-small-btn {
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+.dashboard-error {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: var(--red);
+  background: var(--red-soft);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Indicadores de stock en tablas de inventario */
+.stock-num {
+  display: inline-flex;
+  min-width: 38px;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.stock-out {
+  background: var(--red-dark);
+  color: #ffffff;
+}
+
+.stock-low {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.stock-ok {
+  background: var(--green);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   11. DISEÑO RESPONSIVO (TABLETS Y DISPOSITIVOS MÓVILES)
+   ========================================================================== */
+
+/* Pantallas Medianas (Laptops pequeñas / Tablets en horizontal) */
+@media (max-width: 1100px) {
+  .navbar-ronem {
+    padding: 0 18px;
+  }
+
+  .nav-link-item {
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .dashboard-grid,
+  #dashboardPage > div:has(i) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .dashboard-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets en vertical */
+@media (max-width: 820px) {
+  .navbar-ronem {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 16px 0;
+  }
+
+  .nav-brand {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-link-item {
+    height: 48px;
+    padding: 0 14px;
+  }
+
+  .page {
+    padding: 22px 14px;
+  }
+
+  .card-ronem {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+  }
+
+  .dashboard-chart-container {
+    height: 310px;
+  }
+}
+
+/* Celulares y pantallas muy pequeñas */
+@media (max-width: 600px) {
+  .page {
+    padding: 16px 10px;
+  }
+
+  .card-ronem {
+    padding: 17px;
+  }
+
+  .dashboard-header,
+  .dashboard-card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-update-btn,
+  .dashboard-small-btn {
+    width: 100%;
+  }
+
+  .dashboard-grid,
+  #dashboardPage > div:has(i) {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-card {
+    padding: 18px;
+  }
+
+  .dashboard-summary-grid {
+    gap: 16px;
+  }
+
+  .monthly-summary {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .monthly-summary-divider {
+    width: 100%;
+    height: 1px;
+    min-height: 1px;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-chart-container {
+    height: 280px;
+  }
+
+  .file-drop {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .d-flex.align-items-center.justify-content-between {
+    align-items: stretch !important;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .d-flex.gap-2,
+  .d-flex.align-items-center.gap-2 {
+    flex-wrap: wrap;
+  }
+
+  .btn-ronem {
+    justify-content: center;
+  }
+}
+
+/*==================================================
+USUARIO - NAVBAR
+==================================================*/
+
+.nav-user-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+  margin: 0;
+}
+
+.nav-user-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: auto;
+  max-width: 175px;
+  min-width: 0;
+  min-height: 40px;
+  padding: 5px 10px;
+  color: #ffffff;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nav-user-button:hover,
+.nav-user-button:focus,
+.nav-user-button.show {
+  color: #ffffff;
+  background: #1b1b1b;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(202, 41, 66, 0.12);
+}
+
+.nav-user-button::after {
+  margin-left: auto;
+  color: #bdbdbd;
+  font-size: 0.58rem;
+}
+
+.nav-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  color: #111111;
+  background: #ffffff;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.nav-user-information {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  line-height: 1.05;
+  text-align: left;
+}
+
+.nav-user-name {
+  display: block;
+  max-width: 105px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-user-role {
+  display: block;
+  margin-top: 2px;
+  color: #999999;
+  font-size: 0.56rem;
+}
+
+/*==================================================
+MENÚ DESPLEGABLE
+==================================================*/
+
+.nav-user-menu {
+  width: 205px;
+  padding: 7px;
+  margin-top: 8px !important;
+  color: #ffffff;
+  background: #0f0f0f !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.nav-user-menu.show {
+  background: #0f0f0f !important;
+}
+
+.nav-user-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #181818;
+  border-radius: 8px;
+}
+
+.nav-user-menu-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+  color: #111111;
+  background: #ffffff;
+  border-radius: 50%;
+  font-size: 13px;
+}
+
+.nav-user-menu-header > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nav-user-menu-header strong {
+  display: block;
+  max-width: 130px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-user-menu-header small {
+  margin-top: 2px;
+  color: #999999;
+  font-size: 0.6rem;
+}
+
+.nav-user-menu .dropdown-divider {
+  margin: 7px 2px;
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.nav-user-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  color: #e5e5e5 !important;
+  background: transparent !important;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.nav-user-menu-link i {
+  display: inline-flex;
+  justify-content: center;
+  width: 16px;
+  color: #bbbbbb;
+  font-size: 13px;
+}
+
+.nav-user-menu-link:hover,
+.nav-user-menu-link:focus {
+  color: #ffffff !important;
+  background: #222222 !important;
+}
+
+.nav-user-menu .nav-user-logout {
+  color: #ff4d57 !important;
+}
+
+.nav-user-menu .nav-user-logout i {
+  color: #ff4d57;
+}
+
+.nav-user-menu .nav-user-logout:hover,
+.nav-user-menu .nav-user-logout:focus {
+  color: #ffffff !important;
+  background: rgba(202, 41, 66, 0.18) !important;
+}
+
+.nav-user-menu .nav-user-logout:hover i,
+.nav-user-menu .nav-user-logout:focus i {
+  color: #ffffff;
+}
+
+/*==================================================
+RESPONSIVE DE NAVBAR Y USUARIO
+==================================================*/
+
+@media (max-width: 1240px) {
+  .navbar-ronem {
+    grid-template-columns:
+      minmax(140px, 165px)
+      minmax(0, 1fr)
+      48px;
+    padding-right: 16px;
+    padding-left: 16px;
+    gap: 10px;
+  }
+
+  .nav-link-item {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 11px;
+  }
+
+  .nav-user-information {
+    display: none;
+  }
+
+  .nav-user-button {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    justify-content: center;
+  }
+
+  .nav-user-button::after {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .navbar-ronem {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0;
+    padding: 10px 16px 0;
+  }
+
+  .nav-brand {
+    width: auto;
+    padding-bottom: 10px;
+  }
+
+  .nav-user-dropdown {
+    margin-left: auto;
+    padding-bottom: 10px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    height: 48px;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-link-item {
+    height: 48px;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-user-menu {
+    width: min(205px, calc(100vw - 24px));
+  }
+}
