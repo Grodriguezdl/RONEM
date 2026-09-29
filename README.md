@@ -1,4 +1,4 @@
-# RONEM 🏍️
+# RONEM
 
 Plataforma web para un taller y tienda de motocicletas, desarrollada con **PHP**, **MySQL**, **JavaScript**, **HTML** y **CSS**. Integra en un solo sistema el sitio público, la tienda de repuestos y accesorios, las órdenes de servicio del taller, una moto escuela con seguimiento de progreso y un programa de fidelización por puntos, con paneles distintos para clientes, técnicos, empleados y administradores.
 
@@ -42,16 +42,6 @@ Plataforma web para un taller y tienda de motocicletas, desarrollada con **PHP**
 - Panel del administrador de taller: agenda, órdenes, equipo e historial.
 - **Reportes de órdenes en PDF** generados con FPDF.
 - Notificaciones por correo con PHPMailer.
-
-## Capturas de pantalla
-
-| Inicio | Panel del cliente |
-|---|---|
-| ![Inicio](docs/capturas/inicio.png) | ![Cliente](docs/capturas/cliente.png) |
-
-| Panel del técnico | Ventas |
-|---|---|
-| ![Técnico](docs/capturas/tecnico.png) | ![Ventas](docs/capturas/ventas.png) |
 
 ## Tecnologías
 
@@ -143,4 +133,4 @@ Todas las cuentas usan la contraseña `Demo1234`.
 
 ## Autores
 
-- **Gabriel Rodríguez** · [GitHub](https://github.com/Grodriguezdl) · [LinkedIn](#)
+- **Gabriel Rodríguez** · [GitHub](https://github.com/Grodriguezdl)
